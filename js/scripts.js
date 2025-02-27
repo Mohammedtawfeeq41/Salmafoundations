@@ -377,40 +377,85 @@ document.addEventListener("DOMContentLoaded", function () {
 //   })
 // }
 
-let name = document.getElementById("name");
-let email = document.getElementById("email");
-let subject = document.getElementById("subject");
-let message = document.getElementById("message");
+// let name = document.getElementById("name");
+// let email = document.getElementById("email");
+// let subject = document.getElementById("subject");
+// let message = document.getElementById("message");
 
-(function() {
-  emailjs.init("0-lpnAN5_EjDzDavm");
-})();
+// (function() {
+//   emailjs.init("0-lpnAN5_EjDzDavm");
+// })();
 
-let templateParams = {
-  to_name : "Simple Coding Tutorials",
-  from_name: name.value,
-  from_email:email.value,
-  from_subject:subject.value,
-  message:message.value
+// let templateParams = {
+//   to_name : "Simple Coding Tutorials",
+//   from_name: name.value,
+//   from_email:email.value,
+//   from_subject:subject.value,
+//   message:message.value
+// }
+
+// function sendemail() {
+//   templateParams.to_name = "SalmaFoundations";
+//   templateParams.from_name = name.value;
+//   templateParams.from_email = email.value;
+//   templateParams.from_subject = subject.value;
+//   templateParams.message = message.value;
+//   emailjs.send("service_s6yri9i","template_ujst02r",templateParams)
+//   .then(function(){
+//     showAlert("Message sent successfully!");
+//     name.value="";
+//     email.value="";
+//     subject.value="";
+//     message.value="";
+//   }),function() {
+//     showAlert("Failed to send message!");
+//   }
+// }
+// Initialize EmailJS only after the page loads
+window.onload = function () {
+    emailjs.init("0-lpnAN5_EjDzDavm"); // Your actual EmailJS Public Key
+};
+
+function sendemail(event) {
+    event.preventDefault(); // Prevent form from refreshing
+
+    // Get form input values
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let subject = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+
+    // Ensure all required fields are filled
+    if (!name || !email || !message) {
+        alert("Please fill in all required fields.");
+        return;
+    }
+
+    // Create the template parameters object
+    let templateParams = {
+        to_name: "SalmaFoundations", // The receiver's name
+        from_name: name, // Sender's name
+        from_email: email, // Sender's email
+        from_subject: subject, // Subject
+        message: message // Message
+    };
+
+    // Send email using EmailJS
+    emailjs.send("service_s6yri9i", "template_ujst02r", templateParams)
+        .then(function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+            alert("Message sent successfully!");
+            document.getElementById("contact-form").reset(); // Reset form after sending
+        })
+        .catch(function (error) {
+            console.error("FAILED...", error);
+            alert("Failed to send message. Please try again.");
+        });
 }
 
-function sendemail() {
-  templateParams.to_name = "SalmaFoundations";
-  templateParams.from_name = name.value;
-  templateParams.from_email = email.value;
-  templateParams.from_subject = subject.value;
-  templateParams.message = message.value;
-  emailjs.send("service_s6yri9i","template_ujst02r",templateParams)
-  .then(function(){
-    showAlert("Message sent successfully!");
-    name.value="";
-    email.value="";
-    subject.value="";
-    message.value="";
-  }),function() {
-    showAlert("Failed to send message!");
-  }
-}
+// Attach event listener to form submission
+document.getElementById("contact-form").addEventListener("submit", sendemail);
+
 
 
 
