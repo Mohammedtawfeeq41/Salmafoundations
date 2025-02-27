@@ -20,12 +20,9 @@
 	<link rel="stylesheet" href="revolution/css/settings.css" />
 	<link rel="stylesheet" href="css/style.css" />
 
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-	<script type="text/javascript">
-    (function() {
-        emailjs.init("0-lpnAN5_EjDzDavm"); // Your Public Key
-    })();
-	</script>
+	<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 
 	<!-- Salmafoundations title logo -->
 	<link rel="icon" href="img/titlelogo.png">
@@ -450,10 +447,12 @@
 								<div class="col-lg-7 offset-lg-1">
 									<h2 class="section-title">Get a Free Quote</h2>
 									<p  id="span1" class="mb-40">Looking for joint venture or for contract work, <br> reach us</p>
-									<!-- Contact Form -->
-<form id="contact-form" class="contact-form material">
+<!-- Contact Form -->
+<form id="contact-form" class="contact-form material" method="POST">
+    
     <div class="row">
         <div class="col-lg-6">
+            <!-- Name -->
             <div class="material__form-group form-group">
                 <input type="text" name="name" id="name" class="form-input material__input" required>
                 <label for="name" class="material__label">Name <abbr title="required" class="required">*</abbr></label>
@@ -461,6 +460,7 @@
             </div>
         </div>
         <div class="col-lg-6">
+            <!-- Email -->
             <div class="material__form-group form-group">
                 <input type="email" name="email" id="email" class="form-input material__input" required>
                 <label for="email" class="material__label">Email <abbr title="required" class="required">*</abbr></label>
@@ -469,25 +469,28 @@
         </div>
     </div>
 
+    <!-- Subject -->
     <div class="material__form-group form-group">
         <input type="text" name="subject" id="subject" class="form-input material__input">
         <label for="subject" class="material__label">Subject</label>
         <span class="material__underline"></span>
     </div>
 
+    <!-- Message -->
     <div class="material__form-group form-group">
         <textarea id="message" name="message" rows="7" class="form-input material__input" required></textarea>
         <label for="message" class="material__label">Message <abbr title="required" class="required">*</abbr></label>
         <span class="material__underline"></span>
     </div> 
 
+    <!-- Hidden Inputs for Customization -->
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://salmafoundations.com//thank-you.html">
 
-    <input type="submit" class="btn btn--lg btn--color btn--button" value="Send Message">
+    <!-- Submit Button -->
+    <input  onclick="sendemail()" type="submit" class="btn btn--lg btn--color btn--button" value="Send Message">
     <div id="msg" class="message"></div>
 </form>
-
 <!-- End Contact Form -->
 								</div>
 				  </div>
