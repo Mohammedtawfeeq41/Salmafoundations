@@ -377,34 +377,41 @@ document.addEventListener("DOMContentLoaded", function () {
 //   })
 // }
 
-function sendemail(event) {
-  event.preventDefault(); // Prevent form from reloading
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let subject = document.getElementById("subject");
+let message = document.getElementById("message");
 
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var subject = document.getElementById("subject").value;
-  var message = document.getElementById("message").value;
+(function() {
+  emailjs.init("0-lpnAN5_EjDzDavm");
+})();
 
-  var templateParams = {
-      to_name: to_name,
-      email: email,
-      subject: subject,
-      message: message
-  };
-
-  emailjs.send('service_s6yri9i', 'template_ujst02r', templateParams)
-  .then(function(response) {
-      console.log('SUCCESS!', response.status, response.text);
-      alert("Sent successfully!");
-      document.getElementById("contact-form").reset(); // Reset form
-  }, function(error) {
-      console.log('FAILED...', error);
-      alert("Failed to send. Please try again.");
-  });
+let templateParams = {
+  to_name : "Simple Coding Tutorials",
+  from_name: name.value,
+  from_email:email.value,
+  from_subject:subject.value,
+  message:message.value
 }
 
-// Attach event listener
-document.getElementById("contact-form").addEventListener("submit", sendemail);
+function sendemail() {
+  templateParams.to_name = "SalmaFoundations";
+  templateParams.from_name = name.value;
+  templateParams.from_email = email.value;
+  templateParams.from_subject = subject.value;
+  templateParams.message = message.value;
+  emailjs.send("service_s6yri9i","template_ujst02r",templateParams)
+  .then(function(){
+    showAlert("Message sent successfully!");
+    name.value="";
+    email.value="";
+    subject.value="";
+    message.value="";
+  }),function() {
+    showAlert("Failed to send message!");
+  }
+}
+
 
 
 
