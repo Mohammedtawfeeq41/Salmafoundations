@@ -386,7 +386,7 @@ function sendemail(event) {
   var message = document.getElementById("message").value;
 
   var templateParams = {
-      to_name: name,
+      to_name: to_name,
       email: email,
       subject: subject,
       message: message
