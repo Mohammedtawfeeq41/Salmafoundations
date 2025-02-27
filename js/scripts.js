@@ -380,13 +380,13 @@ document.addEventListener("DOMContentLoaded", function () {
 function sendemail(event) {
   event.preventDefault(); // Prevent form from reloading
 
-  var from_name = document.getElementById("name").value;
+  var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var subject = document.getElementById("subject").value;
   var message = document.getElementById("message").value;
 
   var templateParams = {
-      from_name: from_name,
+      to_name: name,
       email: email,
       subject: subject,
       message: message
@@ -405,5 +405,6 @@ function sendemail(event) {
 
 // Attach event listener
 document.getElementById("contact-form").addEventListener("submit", sendemail);
+
 
 
