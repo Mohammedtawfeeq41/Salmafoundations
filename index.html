@@ -444,50 +444,49 @@
 									<h2 class="section-title">Get a Free Quote</h2>
 									<p  id="span1" class="mb-40">Looking for joint venture or for contract work, <br> reach us</p>
 									<!-- Contact Form -->
-									<form id="contact-form" class="contact-form material" method="post" action="#">
-		
-										<div class="row">
-											<div class="col-lg-6">
-												<!-- Name -->
-												<div class="material__form-group form-group">
-													<input type="text" name="name" id="name" class="form-input material__input" required="">
-													<label for="name" class="material__label">Name
-														<abbr title="required" class="required">*</abbr>
-													</label>
-													<span class="material__underline"></span>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<!-- Email -->
-												<div class="material__form-group form-group">
-													<input type="email" name="email" id="email" class="form-input material__input" required="">
-													<label for="email" class="material__label">Email
-														<abbr title="required" class="required">*</abbr>
-													</label>
-													<span class="material__underline"></span>
-												</div>
-											</div>
-										</div>
-		
-										<!-- Subject -->
-										<div class="material__form-group form-group">
-											<input type="text" name="subject" id="subject" class="form-input material__input">
-											<label for="subject" class="material__label">Subject
-											</label>
-											<span class="material__underline"></span>
-										</div>							
-		
-										<div class="material__form-group form-group">
-											<textarea id="message" name="message" rows="7" class="form-input material__input" required=""></textarea>
-											<label for="message" class="material__label">Message
-												<abbr title="required" class="required">*</abbr>
-											</label>
-											<span class="material__underline"></span>
-										</div>								
-		
-										<input type="submit" class="btn btn--lg btn--color btn--button" value="Send Message" id="submit-message">
-										<div id="msg" class="message"></div>
-									</form>
+<form id="contact-form" class="contact-form material" method="POST" action="https://dashboard.emailjs.com/admin/https://salmafondations.com@gmail.com">
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- Name -->
+            <div class="material__form-group form-group">
+                <input type="text" name="name" id="name" class="form-input material__input" required>
+                <label for="name" class="material__label">Name <abbr title="required" class="required">*</abbr></label>
+                <span class="material__underline"></span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <!-- Email -->
+            <div class="material__form-group form-group">
+                <input type="email" name="email" id="email" class="form-input material__input" required>
+                <label for="email" class="material__label">Email <abbr title="required" class="required">*</abbr></label>
+                <span class="material__underline"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subject -->
+    <div class="material__form-group form-group">
+        <input type="text" name="subject" id="subject" class="form-input material__input">
+        <label for="subject" class="material__label">Subject</label>
+        <span class="material__underline"></span>
+    </div>
+
+    <!-- Message -->
+    <div class="material__form-group form-group">
+        <textarea id="message" name="message" rows="7" class="form-input material__input" required></textarea>
+        <label for="message" class="material__label">Message <abbr title="required" class="required">*</abbr></label>
+        <span class="material__underline"></span>
+    </div> 
+
+    <!-- Hidden Inputs for Customization -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://salmafoundations.com//thank-you.html">
+
+    <!-- Submit Button -->
+    <input type="submit" class="btn btn--lg btn--color btn--button" value="Send Message">
+    <div id="msg" class="message"></div>
+</form>
 								</div>
 				  </div>
 				</div>
@@ -568,6 +567,7 @@
 	<script src="revolution/js/jquery.themepunch.revolution.min.js"></script>
 	<script src="js/rev-slider.js"></script>
 	<script src="js/scripts.js"></script>
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 
 	<!-- Rev Slider Offline Scripts -->
