@@ -356,24 +356,54 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function sendemail(){
+// function sendemail(){
 
-	var from_name=document.getElementById("name").value;
-	var email=document.getElementById("email").value;
-	var email=document.getElementById("subject").value;
-	var message=document.getElementById("message").value;
+// 	var from_name=document.getElementById("name").value;
+// 	var email=document.getElementById("email").value;
+// 	var email=document.getElementById("subject").value;
+// 	var message=document.getElementById("message").value;
 
-	var templateParams = {
-        email: email,
-        to_name: name,
-		    message: message
-      };
+// 	var templateParams = {
+//         email: email,
+//         to_name: name,
+// 		    message: message
+//       };
 
-      emailjs.send('service_s6yri9i', 'template_ujst02r', templateParams)
-  .then(function(response) {
-     console.log('SUCCESS!', response.status, response.text);
-     window.alert("Sent successfully!");
+//       emailjs.send('service_s6yri9i', 'template_ujst02r', templateParams)
+//   .then(function(response) {
+//      console.log('SUCCESS!', response.status, response.text);
+//      window.alert("Sent successfully!");
      
-  })
+//   })
+// }
+
+function sendemail(event) {
+  event.preventDefault(); // Prevent form from reloading
+
+  var from_name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var subject = document.getElementById("subject").value;
+  var message = document.getElementById("message").value;
+
+  var templateParams = {
+      from_name: from_name,
+      email: email,
+      subject: subject,
+      message: message
+  };
+
+  emailjs.send('service_s6yri9i', 'template_ujst02r', templateParams)
+  .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      alert("Sent successfully!");
+      document.getElementById("contact-form").reset(); // Reset form
+  }, function(error) {
+      console.log('FAILED...', error);
+      alert("Failed to send. Please try again.");
+  });
 }
+
+// Attach event listener
+document.getElementById("contact-form").addEventListener("submit", sendemail);
+
 
