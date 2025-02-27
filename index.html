@@ -20,6 +20,13 @@
 	<link rel="stylesheet" href="revolution/css/settings.css" />
 	<link rel="stylesheet" href="css/style.css" />
 
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" > </script>
+	<script type="text/javascript">
+	  (function() {
+	  emailjs.init("0-lpnAN5_EjDzDavm");
+	  })(); 
+	  </script>
+
 	<!-- Salmafoundations title logo -->
 	<link rel="icon" href="img/titlelogo.png">
 	<link rel="shortcut icon" href="img/titlelogo.png">
@@ -484,7 +491,7 @@
     <input type="hidden" name="_next" value="https://salmafoundations.com//thank-you.html">
 
     <!-- Submit Button -->
-    <input type="submit" class="btn btn--lg btn--color btn--button" value="Send Message">
+    <input onclick="sendmail()" type="submit" class="btn btn--lg btn--color btn--button" value="Send Message">
     <div id="msg" class="message"></div>
 </form>
 								</div>
