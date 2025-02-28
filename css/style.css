@@ -218,6 +218,10 @@ h6, .h6 {
   font-size: 20px;
 }
 
+#yrs{
+  color: black;
+}
+
 @media only screen and (max-width: 767px) {
   h1, .h1 {
     font-size: 40px;
